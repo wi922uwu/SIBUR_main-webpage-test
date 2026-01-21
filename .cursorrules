@@ -1,0 +1,474 @@
+# CURSOR RULES: ПРОЕКТ СИБУР
+
+You are an expert Full-Stack Developer working on a B2B E-commerce platform for SIBUR (ПАО "СИБУР Холдинг").
+You are building a closed corporate merchandise store for employees and partners.
+
+## PROJECT CONTEXT
+
+**Project Type:** Closed B2B E-commerce Platform  
+**Client:** ПАО "СИБУР Холдинг"  
+**Executor:** Custom Lab  
+**Reference Architecture:** SberShop (sbershop.ru)  
+**Timeline:** 
+- Stage 1: 01.02.2025 - 25.02.2025 (Concept & Development)
+- Stage 2: 25.02.2025 - 15.03.2025 (Testing & Content)
+- Stage 3: 15.03.2025 - 30.03.2025 (Launch)
+- Stage 4: 30.03.2025 - 30.04.2025 (User Testing)
+
+---
+
+## PROJECT STRUCTURE
+
+```
+sibur-tender/
+├── frontend/          # React/Next.js frontend
+├── backend/           # Python FastAPI or static JSON
+├── public/            # Static assets (images, logos)
+└── docs/              # Documentation
+```
+
+---
+
+## TECHNICAL STACK
+
+### Frontend
+- **Framework:** React or Next.js (SPA/Landing Page)
+- **Styling:** Tailwind CSS (Mobile First)
+- **Icons:** Heroicons or Phosphor Icons
+- **Fonts:** Roboto (Google Fonts)
+- **Build:** Vite or Next.js build
+
+### Backend (Optional)
+- **Option 1:** Static JSON catalog (no backend needed)
+- **Option 2:** Python FastAPI (if cart functionality needed)
+
+### Hosting
+- Vercel, Netlify, or VPS
+
+---
+
+## DESIGN SYSTEM (BRANDBOOK)
+
+### Color Palette
+
+**Primary Colors (60% of interface):**
+```css
+--color-brand-primary: #008C95;    /* Main buttons, active icons, links, header */
+--color-brand-dark: #00313C;        /* Footer, H1-H2, text on light bg, modals */
+--color-brand-light: #77E2C3;      /* Section backgrounds, secondary buttons hover */
+--color-base-white: #FFFFFF;        /* Main background, cards, text on dark */
+```
+
+**Accent Colors (max 10% of screen):**
+```css
+--color-accent-orange: #E04E39;     /* Primary CTA (Buy, Order), badges */
+--color-accent-hover: #C43C28;      /* Orange button hover state */
+```
+
+**Functional Colors:**
+```css
+--color-success: #27AE60;           /* Success actions, "Delivered" status */
+--color-warning: #FCC217;           /* Warnings, "Processing" status */
+--color-error: #FC786E;             /* Validation errors, "Cancelled" status */
+--color-info: #008DFC;              /* Info messages, "Sent" status */
+```
+
+**Neutral Colors:**
+```css
+--color-text-primary: #262626;      /* 85% opacity - Main text, H3-H6 */
+--color-text-secondary: #3B3B3B;    /* 70% opacity - Captions, metadata */
+--color-text-disable: #5A5A5A;      /* 50% opacity - Placeholders, disabled */
+--color-border: #E5E5E5;            /* 10% opacity - Card borders, inputs */
+--color-bg-grey: #F5F7F8;           /* 5% opacity - Backgrounds, table rows */
+```
+
+### Typography
+
+**Font Family:**
+- Primary: `Roboto` (Google Fonts)
+- Fallback: `Arial, sans-serif`
+- Base size: `16px = 1rem`
+
+**Headings:**
+```css
+/* Desktop / Mobile */
+H1: 48px/60px → 32px/40px, Bold (700), Letter Spacing -0.5px
+H2: 36px/44px → 28px/36px, Bold (700), Letter Spacing 0px
+H3: 24px/32px → 20px/28px, Bold (700), Letter Spacing 0px
+H4: 20px/28px → 18px/24px, Medium (500), Letter Spacing 0.1px
+```
+
+**Body Text:**
+```css
+Body L: 18px/28px, Regular (400)    /* Lead paragraphs */
+Body M: 16px/24px, Regular (400)    /* Main text, product descriptions */
+Body S: 14px/20px, Regular (400)    /* Tooltips, small captions */
+Caption: 12px/16px, Regular (400)   /* Technical text, copyright */
+Button: 14px/16px, Bold (700)       /* Button text */
+```
+
+### Grid System
+
+**Breakpoints:**
+- Desktop (1200px+): 12 columns, Gutter 24px, Margin auto
+- Tablet (768px-1199px): 8 columns, Gutter 16px, Padding 24px
+- Mobile (<767px): 4 columns, Gutter 16px, Padding 16px
+
+**Spacing Scale (4px/8px multiplier):**
+```css
+--spacing-xs: 4px;   /* Small element spacing */
+--spacing-s: 8px;    /* Icon-text spacing, button padding Y */
+--spacing-m: 16px;   /* Standard block spacing, card padding */
+--spacing-l: 24px;   /* Section spacing in cards */
+--spacing-xl: 32px;  /* Large block spacing */
+--spacing-xxl: 48px+; /* Landing section spacing */
+```
+
+### UI Components
+
+**Buttons:**
+```css
+/* Primary Button */
+bg: #008C95
+text: #FFFFFF
+border: none
+hover: bg darken 10% (#007A82), shadow: 0 4px 12px rgba(0, 140, 149, 0.3)
+active: bg darken 15% (#006A70)
+disabled: bg #E5E5E5, text #999999
+
+/* CTA Button */
+bg: #E04E39
+text: #FFFFFF
+often with icon (cart, arrow)
+
+/* Secondary Button */
+bg: transparent
+border: 2px solid #008C95
+text: #008C95
+hover: bg rgba(0, 140, 149, 0.1)
+
+/* Text Link */
+text: #008C95
+underline: on hover
+often with arrow icon →
+```
+
+**Inputs:**
+```css
+/* Default */
+bg: #F5F7F8
+border: 1px solid #E5E5E5
+radius: 4px
+
+/* Focus */
+bg: #FFFFFF
+border: 1px solid #008C95
+shadow: 0 0 0 2px rgba(0, 140, 149, 0.2)
+
+/* Error */
+border: 1px solid #FC786E
+text: #FC786E
+icon: "!" on right
+```
+
+**Cards:**
+```css
+/* Product Card */
+bg: #FFFFFF
+radius: 8px
+shadow: 0 2px 8px rgba(0, 49, 60, 0.05)
+hover: translateY -4px, shadow: 0 12px 24px rgba(0, 49, 60, 0.1)
+content: Photo, Label (New/Hit), Name, SKU, Price, "Add to cart" button
+
+/* Info Card */
+bg: #F5F7F8 or Gradient
+padding: 24px
+```
+
+**Gradients:**
+```css
+/* Main Gradient (45deg) */
+background: linear-gradient(45deg, #008C95 0%, #00313C 100%);
+
+/* Soft Gradient (30deg) */
+background: linear-gradient(30deg, #008C95 0%, #77E2C3 100%);
+
+/* Accent Gradient (60deg) */
+background: linear-gradient(60deg, #E04E39 0%, #FFCCBC 100%);
+```
+
+**UX Patterns:**
+- **Skeleton Loading:** Gray pulsing blocks (#F0F2F5 → #E6E8EB) instead of spinners
+- **Modals:** Overlay black 60%, backdrop-filter blur(4px), centered, radius 8px, close on X/overlay/Esc
+- **Toasts:** Top right, auto-hide 4s, slide in right animation
+
+---
+
+## FUNCTIONAL REQUIREMENTS
+
+### Pages Structure
+
+1. **Homepage**
+   - News block (Company info, loyalty programs)
+   - Banners with new collections
+
+2. **Catalog**
+   - Categories and Subcategories
+   - Filters (price, material, collection)
+   - Search
+
+3. **Product Card**
+   - Multiple photos (360°/video if available)
+   - Price
+   - Minimum order quantity
+   - Stock status (dynamic)
+   - Rating/reviews (marketplace style)
+   - Logo application type
+   - Description, warranty, specifications
+
+4. **Cart**
+   - Product list
+   - Quantity modification
+
+5. **Checkout**
+   - Split Order functionality (if part of order is delayed)
+
+6. **User Dashboard**
+   - Order history
+   - Current order statuses
+
+7. **Admin Dashboard**
+   - View all orders
+   - Financial reports (spent funds, limit balance)
+   - Export reports (Excel/PDF)
+
+8. **Service Pages**
+   - Contacts
+   - Delivery information
+
+### Order Statuses
+
+1. Заказ сформирован (Order Created)
+2. Ожидает оплаты (Awaiting Payment)
+3. Оплачено / Производство / Передано в обработку (Paid / Production / Processing)
+4. Готово к отгрузке (Самовывоз) (Ready for Shipment / Pickup)
+5. Передано в ТК (Transferred to Carrier)
+6. Принято Дистрибьютором / Рекламация (Accepted / Complaint)
+
+### Order Form Fields
+
+- Product list
+- Supplier
+- Quantity
+- Price per item and total
+- Company name
+- Delivery address
+- Contact person (for logistics)
+- Warehouse working hours restrictions
+
+---
+
+## CODING STANDARDS
+
+### General Rules
+
+1. **Mobile First:** Always design for mobile first, then scale up
+2. **Accessibility:** Use semantic HTML, ARIA labels where needed
+3. **Performance:** Optimize images, lazy load, code splitting
+4. **SEO:** Proper meta tags, semantic structure
+5. **Browser Support:** Modern browsers (Chrome, Firefox, Safari, Edge latest)
+
+### CSS Guidelines
+
+1. **Use Tailwind CSS** utility classes primarily
+2. **Custom CSS** only for complex components (use CSS variables from design system)
+3. **Responsive:** Use Tailwind breakpoints (sm, md, lg, xl)
+4. **Naming:** BEM methodology for custom classes
+
+### JavaScript/TypeScript Guidelines
+
+1. **TypeScript:** Use TypeScript for type safety
+2. **Components:** Functional components with hooks
+3. **State Management:** React Context or Zustand for simple state
+4. **API Calls:** Use fetch or axios, handle errors properly
+5. **Code Style:** ESLint + Prettier
+
+### File Naming
+
+- Components: `PascalCase.tsx` (e.g., `ProductCard.tsx`)
+- Utilities: `camelCase.ts` (e.g., `formatPrice.ts`)
+- Constants: `UPPER_SNAKE_CASE.ts` (e.g., `ORDER_STATUSES.ts`)
+- Styles: `kebab-case.css` (e.g., `product-card.css`)
+
+---
+
+## INTEGRATIONS
+
+### Required Integrations
+
+1. **ЭДО (Electronic Document Management)** - Mandatory
+2. **Честный ЗНАК (Marking System)** - Product marking
+3. **Transport Companies API** - Delivery tracking (СДЭК, etc.)
+4. **Email/SMS Notifications** - Order status updates
+
+### API Structure
+
+```typescript
+// Example API endpoints
+GET /api/products          // Product catalog
+GET /api/products/:id      // Product details
+POST /api/orders           // Create order
+GET /api/orders/:id        // Order status
+GET /api/orders/:id/track  // Delivery tracking
+```
+
+---
+
+## CONTENT REQUIREMENTS
+
+### Product Card Must Include
+
+- Price per unit (without VAT)
+- Production time
+- Material
+- Product and packaging size
+- Logo application options
+- Packaging (shuber)
+
+### Product Categories
+
+- ECO products
+- Products from SIBUR raw materials
+- Children's products (clothing, constructors)
+- Collaborations (football/basketball clubs, Winline, Miranda)
+
+---
+
+## SECURITY REQUIREMENTS
+
+1. **HTTPS:** Mandatory (all traffic encrypted)
+2. **Authentication:** Secure login for employees/partners
+3. **Authorization:** Role-based access (User, Admin, Controller)
+4. **Data Protection:** GDPR compliance, secure data storage
+5. **Input Validation:** Validate all user inputs
+6. **CSRF Protection:** Implement CSRF tokens for forms
+
+---
+
+## PERFORMANCE REQUIREMENTS
+
+1. **Availability:** 99.9% uptime
+2. **Page Load:** < 3 seconds on 3G
+3. **Mobile Optimization:** Fast on mobile networks
+4. **Image Optimization:** WebP format, lazy loading
+5. **Code Splitting:** Load only necessary code
+
+---
+
+## TESTING REQUIREMENTS
+
+1. **Unit Tests:** Test utility functions
+2. **Component Tests:** Test React components
+3. **E2E Tests:** Test critical user flows (order creation, checkout)
+4. **Cross-Browser:** Test on Chrome, Firefox, Safari, Edge
+5. **Mobile Testing:** Test on iOS and Android devices
+
+---
+
+## DEPLOYMENT
+
+### Environment Variables
+
+```env
+NEXT_PUBLIC_API_URL=https://api.sibur-store.ru
+NEXT_PUBLIC_SITE_URL=https://sibur-store.ru
+```
+
+### Build Commands
+
+```bash
+# Development
+npm run dev
+
+# Production Build
+npm run build
+npm start
+
+# Static Export (if using static JSON)
+npm run export
+```
+
+---
+
+## COMMON PATTERNS
+
+### Product Card Component
+
+```tsx
+<ProductCard
+  id={product.id}
+  name={product.name}
+  price={product.price}
+  image={product.image}
+  stock={product.stock}
+  minQuantity={product.minQuantity}
+  logoTypes={product.logoTypes}
+  onAddToCart={handleAddToCart}
+/>
+```
+
+### Order Status Badge
+
+```tsx
+<StatusBadge 
+  status={order.status} 
+  // Colors: success, warning, error, info based on status
+/>
+```
+
+### Filter Component
+
+```tsx
+<Filters
+  categories={categories}
+  priceRange={priceRange}
+  materials={materials}
+  collections={collections}
+  onFilterChange={handleFilter}
+/>
+```
+
+---
+
+## IMPORTANT NOTES
+
+1. **Brand Compliance:** Always follow SIBUR brandbook colors and typography
+2. **Reference:** Use SberShop architecture as reference for structure
+3. **Mobile First:** Design and code for mobile first
+4. **Accessibility:** Ensure WCAG 2.1 AA compliance
+5. **Performance:** Optimize for slow connections
+6. **Content:** All content should be in Russian
+
+---
+
+## FORBIDDEN PRACTICES
+
+1. ❌ Do NOT use colors outside the brandbook palette
+2. ❌ Do NOT use fonts other than Roboto
+3. ❌ Do NOT ignore mobile responsiveness
+4. ❌ Do NOT hardcode prices or product data (use API/JSON)
+5. ❌ Do NOT skip error handling
+6. ❌ Do NOT use inline styles (use Tailwind or CSS modules)
+7. ❌ Do NOT commit sensitive data (API keys, passwords)
+
+---
+
+## QUICK REFERENCE
+
+**Primary Color:** `#008C95`  
+**Accent Color:** `#E04E39`  
+**Font:** `Roboto`  
+**Grid:** 12 columns (desktop), 4 columns (mobile)  
+**Spacing:** 4px/8px multiplier  
+**Radius:** 4px (inputs), 8px (cards)  
+**Shadow:** Light brand-colored shadows
