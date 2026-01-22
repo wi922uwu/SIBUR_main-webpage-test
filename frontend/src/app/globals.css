@@ -1,0 +1,198 @@
+@import "tailwindcss";
+
+:root {
+  /* Brand Colors */
+  --color-brand-primary: #008C95;    /* Main buttons, active icons, links, header */
+  --color-brand-dark: #00313C;        /* Footer, H1-H2, text on light bg, modals */
+  --color-brand-light: #77E2C3;      /* Section backgrounds, secondary buttons hover */
+  --color-base-white: #FFFFFF;        /* Main background, cards, text on dark */
+
+  /* Accent Colors */
+  --color-accent-orange: #E04E39;     /* Primary CTA (Buy, Order), badges */
+  --color-accent-hover: #C43C28;      /* Orange button hover state */
+
+  /* Functional Colors */
+  --color-success: #27AE60;
+  --color-warning: #FCC217;
+  --color-error: #FC786E;
+  --color-info: #008DFC;
+
+  /* Neutral Colors */
+  --color-text-primary: #262626;      /* 85% opacity - Main text, H3-H6 */
+  --color-text-secondary: #3B3B3B;    /* 70% opacity - Captions, metadata */
+  --color-text-disable: #5A5A5A;      /* 50% opacity - Placeholders, disabled */
+  --color-border: #E5E5E5;            /* 10% opacity - Card borders, inputs */
+  --color-bg-grey: #F5F7F8;           /* 5% opacity - Backgrounds, table rows */
+
+  /* Base overrides */
+  --background: var(--color-base-white);
+  --foreground: var(--color-text-primary);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+/* Плавные переходы для scroll */
+* {
+  scroll-margin-top: 100px;
+}
+
+/* Улучшенный скроллбар */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 140, 149, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 140, 149, 0.5);
+}
+
+@theme inline {
+  --font-sans: var(--font-roboto);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  
+  /* Brand Palette Mapping */
+  --color-brand-primary: #008C95;
+  --color-brand-dark: #00313C;
+  --color-brand-light: #77E2C3;
+  --color-base-white: #FFFFFF;
+  
+  --color-accent-orange: #E04E39;
+  --color-accent-hover: #C43C28;
+  
+  --color-success: #27AE60;
+  --color-warning: #FCC217;
+  --color-error: #FC786E;
+  --color-info: #008DFC;
+  
+  --color-text-primary: #262626;
+  --color-text-secondary: #3B3B3B;
+  --color-text-disable: #5A5A5A;
+  --color-border: #E5E5E5;
+  --color-bg-grey: #F5F7F8;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-roboto), Arial, sans-serif;
+}
+
+/* Typography Base Styles from Brandbook */
+h1 {
+  font-size: 3rem; /* 48px Desktop */
+  line-height: 3.75rem; /* 60px */
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: var(--color-brand-dark);
+}
+
+h2 {
+  font-size: 2.25rem; /* 36px Desktop */
+  line-height: 2.75rem; /* 44px */
+  font-weight: 700;
+  letter-spacing: 0px;
+  color: var(--color-brand-dark);
+}
+
+h3 {
+  font-size: 1.5rem; /* 24px Desktop */
+  line-height: 2rem; /* 32px */
+  font-weight: 700;
+  letter-spacing: 0px;
+  color: var(--color-brand-dark);
+}
+
+h4 {
+  font-size: 1.25rem; /* 20px Desktop */
+  line-height: 1.75rem; /* 28px */
+  font-weight: 500;
+  letter-spacing: 0.1px;
+  color: var(--color-brand-dark);
+}
+
+/* Mobile Typography */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem; /* 32px Mobile */
+    line-height: 2.5rem; /* 40px */
+  }
+
+  h2 {
+    font-size: 1.75rem; /* 28px Mobile */
+    line-height: 2.25rem; /* 36px */
+  }
+
+  h3 {
+    font-size: 1.25rem; /* 20px Mobile */
+    line-height: 1.75rem; /* 28px */
+  }
+
+  h4 {
+    font-size: 1.125rem; /* 18px Mobile */
+    line-height: 1.5rem; /* 24px */
+  }
+}
+
+/* Body Text Styles */
+.body-l {
+  font-size: 1.125rem; /* 18px */
+  line-height: 1.75rem; /* 28px */
+  font-weight: 400;
+}
+
+.body-m {
+  font-size: 1rem; /* 16px */
+  line-height: 1.5rem; /* 24px */
+  font-weight: 400;
+}
+
+.body-s {
+  font-size: 0.875rem; /* 14px */
+  line-height: 1.25rem; /* 20px */
+  font-weight: 400;
+}
+
+.caption {
+  font-size: 0.75rem; /* 12px */
+  line-height: 1rem; /* 16px */
+  font-weight: 400;
+}
+
+/* Button Text Style */
+button, .button {
+  font-size: 0.875rem; /* 14px */
+  line-height: 1rem; /* 16px */
+  font-weight: 700;
+}
+
+/* Custom Scrollbar */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
