@@ -6,7 +6,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { ProductCard } from "@/components/ui/ProductCard";
 import { ProductModal } from "@/components/catalog/ProductModal";
-import { PRODUCTS } from "@/data/catalog";
+import { PRODUCTS, Product } from "@/data/catalog";
 import Image from "next/image";
 import Link from "next/link";
 import { BiCollection, BiCrown } from "react-icons/bi";
